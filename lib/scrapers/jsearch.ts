@@ -59,17 +59,14 @@ export async function scrapeJSearch(): Promise<Omit<Job, 'id' | 'scraped_at'>[]>
   const allJobs: Omit<Job, 'id' | 'scraped_at'>[] = []
   const seen = new Set<string>()
 
-  // Run queries in parallel batches of 5
-  for (let i = 0; i < CREATIVE_QUERIES.length; i += 5) {
-    const batch = CREATIVE_QUERIES.slice(i, i + 5)
-    const settled = await Promise.allSettled(
-      batch.map((q) =>
-        fetchJSearchQuery(q, apiKey).catch((err) => {
-          console.error(`JSearch error for "${q}":`, err)
-          return []
-        })
-      )
-    )
+  // Run queries sequentially with delay to respect 1 req/sec rate limit
+  for (const q of CREATIVE_QUERIES) {
+    await new Promise((r) => setTimeout(r, 1200))
+    const jobs = await fetchJSearchQuery(q, apiKey).catch((err) => {
+      console.error(`JSearch error for "${q}":`, err)
+      return []
+    })
+    const settled = [{ status: 'fulfilled' as const, value: jobs }]
 
     for (const result of settled) {
       if (result.status !== 'fulfilled') continue
