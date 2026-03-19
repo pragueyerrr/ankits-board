@@ -40,6 +40,7 @@ export async function scrapeAllSources(force = false): Promise<ScrapeResult> {
   const allJobs: Omit<Job, 'id' | 'scraped_at'>[] = []
 
   if (adzunaJobs.status === 'fulfilled') {
+    console.log(`Adzuna returned ${adzunaJobs.value.length} jobs`)
     allJobs.push(...adzunaJobs.value)
     if (adzunaJobs.value.length) result.sources.push('adzuna')
   } else {
@@ -47,6 +48,7 @@ export async function scrapeAllSources(force = false): Promise<ScrapeResult> {
   }
 
   if (indeedJobs.status === 'fulfilled') {
+    console.log(`Indeed returned ${indeedJobs.value.length} jobs`)
     allJobs.push(...indeedJobs.value)
     if (indeedJobs.value.length) result.sources.push('indeed_rss')
   } else {
@@ -54,6 +56,7 @@ export async function scrapeAllSources(force = false): Promise<ScrapeResult> {
   }
 
   if (baytJobs.status === 'fulfilled') {
+    console.log(`Bayt returned ${baytJobs.value.length} jobs`)
     allJobs.push(...baytJobs.value)
     if (baytJobs.value.length) result.sources.push('bayt')
   } else {
@@ -61,6 +64,7 @@ export async function scrapeAllSources(force = false): Promise<ScrapeResult> {
   }
 
   if (employerJobs.status === 'fulfilled') {
+    console.log(`Employer sites returned ${employerJobs.value.length} jobs`)
     allJobs.push(...employerJobs.value)
     if (employerJobs.value.length) result.sources.push('employer_sites')
   } else {
@@ -68,6 +72,7 @@ export async function scrapeAllSources(force = false): Promise<ScrapeResult> {
   }
 
   if (jsearchJobs.status === 'fulfilled') {
+    console.log(`JSearch returned ${jsearchJobs.value.length} jobs`)
     allJobs.push(...jsearchJobs.value)
     if (jsearchJobs.value.length) result.sources.push('jsearch')
   } else {
