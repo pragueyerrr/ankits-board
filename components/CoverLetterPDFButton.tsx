@@ -18,7 +18,12 @@ function buildCoverLetterHTML(
   job: Job,
   resumeData?: ResumeData | null
 ): string {
-  const name = resumeData?.name ?? ''
+  const signOffPattern = /^(warm regards|best regards|kind regards|sincerely|regards|yours sincerely|best wishes)/i
+  const allParagraphs = coverLetter.trim().split(/\n\n+/).map((p) => p.trim()).filter(Boolean)
+  const signOffParagraph = allParagraphs.find((p) => signOffPattern.test(p))
+  const extractedName = signOffParagraph ? signOffParagraph.split('\n').slice(1).join(' ').trim() : ''
+
+  const name = resumeData?.name || extractedName || ''
   const email = resumeData?.email ?? ''
   const phone = resumeData?.phone ?? ''
   const location = resumeData?.location ?? 'Dubai, UAE'
@@ -40,13 +45,7 @@ function buildCoverLetterHTML(
     day: 'numeric',
   })
 
-  const signOffPattern = /^(warm regards|best regards|kind regards|sincerely|regards|yours sincerely|best wishes)/i
-  const paragraphs = coverLetter
-    .trim()
-    .split(/\n\n+/)
-    .map((p) => p.trim())
-    .filter(Boolean)
-    .filter((p) => !signOffPattern.test(p))
+  const paragraphs = allParagraphs.filter((p) => !signOffPattern.test(p))
 
   const bodyHTML = paragraphs
     .map(
