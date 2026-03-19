@@ -54,7 +54,10 @@ async function fetchAdzunaTerm(
   const res = await fetch(`${ADZUNA_BASE}/1?${params}`, {
     signal: AbortSignal.timeout(10000),
   })
-  if (!res.ok) return []
+  if (!res.ok) {
+    console.warn(`Adzuna API error ${res.status} for term: ${term}`)
+    return []
+  }
   const data: AdzunaResponse = await res.json()
   return data.results ?? []
 }

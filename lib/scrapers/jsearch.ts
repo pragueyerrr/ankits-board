@@ -41,7 +41,10 @@ async function fetchJSearchQuery(query: string, apiKey: string): Promise<JSearch
     },
     signal: AbortSignal.timeout(5000),
   })
-  if (!res.ok) return []
+  if (!res.ok) {
+    console.warn(`JSearch API error ${res.status} for query: ${query}`)
+    return []
+  }
   const data: JSearchResponse = await res.json()
   return data.data ?? []
 }
