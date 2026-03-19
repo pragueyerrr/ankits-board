@@ -55,6 +55,7 @@ export async function scrapeJSearch(): Promise<Omit<Job, 'id' | 'scraped_at'>[]>
     console.warn('JSEARCH_API_KEY missing — skipping JSearch')
     return []
   }
+  console.log(`JSearch using key: ${apiKey.slice(0, 8)}...`)
 
   const allJobs: Omit<Job, 'id' | 'scraped_at'>[] = []
   const seen = new Set<string>()
