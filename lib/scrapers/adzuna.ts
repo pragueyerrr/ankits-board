@@ -3,42 +3,31 @@ import type { Job, JobSource } from '@/types'
 const ADZUNA_BASE = 'https://api.adzuna.com/v1/api/jobs/ae/search'
 
 const CREATIVE_CATEGORIES = [
-  // Core social media
-  'social media manager',
-  'social media strategist',
-  'social media coordinator',
-  'social media assistant',
-  'social media specialist',
-  'head of social media',
-  // Performance marketing
-  'performance marketing manager',
-  'performance marketing specialist',
-  'paid social manager',
-  'paid media manager',
-  'PPC manager',
-  // Digital marketing
-  'digital marketing manager',
-  'digital marketing specialist',
-  'digital marketing coordinator',
-  'growth marketing manager',
-  // Content marketing
-  'content marketing manager',
-  'content strategist',
-  'content manager',
-  // Brand & strategy
-  'brand manager',
-  'marketing manager',
-  'marketing coordinator',
-  'marketing assistant',
-  'marketing strategist',
-  // Reach roles (masters-level)
-  'head of digital marketing',
-  'head of marketing',
-  'marketing director',
-  'CRM manager',
-  'email marketing manager',
-  'media planner',
-  'e-commerce marketing manager',
+  // Core video production
+  'videographer',
+  'video editor',
+  'video producer',
+  'cinematographer',
+  'director of photography',
+  // Motion & animation
+  'motion graphics designer',
+  'motion graphics artist',
+  'animator',
+  'VFX artist',
+  // Post-production
+  'film editor',
+  'post production editor',
+  'post production supervisor',
+  // Production roles
+  'creative producer',
+  'production coordinator',
+  'video director',
+  'content creator video',
+  'drone operator',
+  // Broader creative
+  'creative director',
+  'video content creator',
+  'digital content producer',
 ]
 
 interface AdzunaResult {

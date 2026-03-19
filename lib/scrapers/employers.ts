@@ -1,13 +1,13 @@
 import * as cheerio from 'cheerio'
 import type { Job, JobSource } from '@/types'
 
-// Direct employer career pages - Dubai marketing, media, and brand companies
+// Direct employer career pages - Dubai media, production, and creative companies
 const EMPLOYER_SITES = [
-  // Advertising agencies
+  // Broadcast & media
   {
-    name: 'Publicis Groupe',
-    url: 'https://www.publicisgroupe.com/en/careers',
-    source: 'publicis',
+    name: 'OSN',
+    url: 'https://www.osn.com/en/careers',
+    source: 'osn',
     selectors: {
       item: '.job, .career, .position, article, [class*="job"], [class*="career"]',
       title: 'h2, h3, h4, .title, [class*="title"]',
@@ -15,20 +15,20 @@ const EMPLOYER_SITES = [
     },
   },
   {
-    name: 'Havas Middle East',
-    url: 'https://www.havas.com/careers/',
-    source: 'havas_me',
+    name: 'MBC Group',
+    url: 'https://www.mbc.net/en/corporate/careers',
+    source: 'mbc',
     selectors: {
       item: '.job, .career, .position, article, [class*="job"]',
       title: 'h2, h3, h4, a, .title, [class*="title"]',
       link: 'a',
     },
   },
-  // Retail / brand with large marketing teams
+  // Production & creative agencies
   {
-    name: 'Chalhoub Group',
-    url: 'https://www.chalhoubgroup.com/careers',
-    source: 'chalhoub',
+    name: 'VICE Media',
+    url: 'https://www.vice.com/en/jobs',
+    source: 'vice',
     selectors: {
       item: '.job, .career, .position, article, [class*="job"]',
       title: 'h2, h3, h4, a, .title, [class*="title"]',
@@ -36,20 +36,20 @@ const EMPLOYER_SITES = [
     },
   },
   {
-    name: 'Majid Al Futtaim',
-    url: 'https://www.majidalfuttaim.com/en/careers',
-    source: 'maf',
+    name: 'Motivate Media Group',
+    url: 'https://www.motivatemedia.com/careers/',
+    source: 'motivate',
     selectors: {
       item: '.job, .career, .vacancy, article, [class*="job"], [class*="career"]',
       title: 'h2, h3, h4, a, .title, [class*="title"]',
       link: 'a',
     },
   },
-  // Hospitality (large marketing depts)
+  // Advertising / creative agencies with video production
   {
-    name: 'Jumeirah Group',
-    url: 'https://www.jumeirah.com/en/jumeirah-group/careers',
-    source: 'jumeirah',
+    name: 'Leo Burnett Dubai',
+    url: 'https://leoburnett.com/careers',
+    source: 'leoburnett',
     selectors: {
       item: '.job-listing, .career-item, article, .position, [class*="job"]',
       title: 'h2, h3, h4, .title, [class*="title"]',
@@ -59,13 +59,12 @@ const EMPLOYER_SITES = [
 ]
 
 const PM_KEYWORDS = [
-  'social media', 'performance marketing', 'digital marketing',
-  'paid social', 'paid media', 'ppc', 'sem', 'seo',
-  'content marketing', 'brand manager', 'marketing manager',
-  'marketing coordinator', 'marketing assistant', 'marketing strategist',
-  'growth marketing', 'crm', 'email marketing', 'media planner',
-  'campaign manager', 'community manager', 'influencer',
-  'e-commerce marketing', 'marketing director', 'head of marketing',
+  'videographer', 'video editor', 'video producer', 'cinematographer',
+  'director of photography', 'dop', 'motion graphics', 'animator',
+  'vfx', 'film editor', 'post production', 'creative producer',
+  'production coordinator', 'video director', 'drone operator',
+  'content creator', 'creative director', 'digital content producer',
+  'broadcast', 'camera operator', 'lighting technician',
 ]
 
 function isCreativeRole(title: string): boolean {

@@ -11,7 +11,7 @@ export async function generateResumeData(
   const cvData = cv.parsed_data as ParsedCV | undefined
   const cvText = cv.raw_text ?? JSON.stringify(cvData ?? {})
 
-  const systemPrompt = `You are an expert resume writer specializing in marketing, social media, and performance marketing roles in Dubai (social media manager, social media strategist, performance marketing, digital marketing, content marketing, brand manager, growth marketing).
+  const systemPrompt = `You are an expert resume writer specializing in video production, filmmaking, and creative media roles in Dubai (videographer, video editor, cinematographer, director of photography, motion graphics designer, animator, VFX artist, creative producer, production coordinator, film editor, post-production editor).
 
 Your goal: craft a HIGHLY TAILORED, one-page resume for this candidate applying to this specific job.
 
@@ -19,9 +19,9 @@ RULES:
 1. The resume MUST fit on one page — adjust bullet count, font size hint, and compact flag accordingly
 2. Prioritize skills/experiences most relevant to THIS specific job
 3. Summary must be 2-3 lines max, directly addressing the role
-4. Skills must be grouped by category, most relevant first (e.g. Social Media & Content, Performance Marketing, Tools & Platforms, Analytics)
+4. Skills must be grouped by category, most relevant first (e.g. Video Production, Post-Production & Editing, Equipment & Software, Creative & Motion)
 5. Each job should have 2-4 bullets maximum (compact: 2, normal: 3-4)
-6. Use strong action verbs, quantify where possible (e.g. "Grew Instagram following by X%", "Managed AED Xk monthly ad spend", "Increased ROAS by X%")
+6. Use strong action verbs, quantify where possible (e.g. "Produced X videos per month", "Edited X-minute documentary", "Reduced post-production time by X%", "Shot X campaigns for brands")
 7. Return ONLY valid JSON — no markdown fences, no explanation`
 
   const userPrompt = `JOB POSTING:
@@ -57,10 +57,10 @@ Return this exact JSON structure:
   "portfolio": "portfolio.com",
   "summary": "2-3 sentence professional summary tailored to this role",
   "skills": [
-    { "category": "Social Media & Content", "items": ["Instagram", "TikTok", "LinkedIn", "Content Strategy"] },
-    { "category": "Performance Marketing", "items": ["Meta Ads", "Google Ads", "Paid Social", "PPC"] },
-    { "category": "Tools & Platforms", "items": ["Hootsuite", "Sprout Social", "Canva", "HubSpot"] },
-    { "category": "Analytics", "items": ["Google Analytics", "Meta Business Suite", "Looker Studio"] }
+    { "category": "Video Production", "items": ["Videography", "Cinematography", "Directing", "Camera Operation"] },
+    { "category": "Post-Production & Editing", "items": ["Adobe Premiere Pro", "DaVinci Resolve", "Final Cut Pro", "Color Grading"] },
+    { "category": "Motion & Animation", "items": ["After Effects", "Motion Graphics", "2D Animation", "VFX"] },
+    { "category": "Equipment & Tools", "items": ["Sony FX3", "RED Camera", "DJI Drone", "Adobe Creative Suite"] }
   ],
   "experiences": [
     {
@@ -69,8 +69,8 @@ Return this exact JSON structure:
       "location": "Dubai, UAE",
       "period": "Jan 2022 – Present",
       "bullets": [
-        "Grew brand Instagram following by X% in 6 months through targeted content strategy",
-        "Managed AED Xk monthly Meta Ads budget, achieving X% ROAS improvement"
+        "Produced and edited X short-form videos per month for social media, achieving X% engagement increase",
+        "Shot and delivered X commercial campaign for [Brand], delivered within X-day turnaround"
       ],
       "relevanceScore": 90
     }
@@ -123,7 +123,7 @@ export async function generateCoverLetterStream(
     messages: [
       {
         role: 'user',
-        content: `You are an expert cover letter writer for marketing and social media professionals in Dubai.
+        content: `You are an expert cover letter writer for video production and creative media professionals in Dubai.
 
 Write a compelling, personalized cover letter for this candidate applying to this job.
 
@@ -139,13 +139,13 @@ Description: ${job.description ?? ''}
 Requirements: ${job.requirements ?? ''}
 
 GUIDELINES:
-- 3-4 paragraphs, professional yet warm tone appropriate for marketing and brand roles
-- Opening: Hook with specific enthusiasm for THIS company/brand — reference their campaigns, social presence, or values
-- Middle 1-2 paragraphs: Connect 2-3 specific marketing achievements to the job requirements (growth metrics, ad spend managed, content performance)
+- 3-4 paragraphs, professional yet creative tone appropriate for video and production roles
+- Opening: Hook with specific enthusiasm for THIS company/project — reference their visual style, productions, or creative vision
+- Middle 1-2 paragraphs: Connect 2-3 specific production achievements to the job requirements (projects delivered, equipment mastered, turnaround times, client results)
 - Closing: Clear call to action
 - Max 350 words
 - Do NOT use generic phrases like "I am writing to express my interest"
-- Reference Dubai's vibrant marketing and brand ecosystem if relevant
+- Reference Dubai's thriving film, content, and media production scene if relevant
 - Format: Just the letter body (no date, no address headers needed)`,
       },
     ],

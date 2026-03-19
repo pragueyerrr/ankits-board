@@ -22,7 +22,7 @@ export default function Navigation() {
       style={{
         background: 'var(--bg-card)',
         borderBottom: '1px solid var(--border)',
-        boxShadow: '0 1px 0 rgba(234,179,8,0.1), 0 2px 8px rgba(0,0,0,0.6)',
+        boxShadow: '0 1px 0 rgba(244,63,94,0.1), 0 2px 8px rgba(0,0,0,0.6)',
       }}
     >
       <div className="container mx-auto px-4 max-w-7xl">
@@ -30,10 +30,10 @@ export default function Navigation() {
 
           <Link href="/" className="flex items-center gap-2 group">
             <div className="w-7 h-7 rounded-lg flex items-center justify-center transition-all"
-              style={{ background: 'var(--red-dim)', border: '1px solid rgba(234,179,8,0.3)' }}>
+              style={{ background: 'var(--red-dim)', border: '1px solid rgba(244,63,94,0.3)' }}>
               <Terminal className="w-4 h-4" style={{ color: 'var(--red)' }} />
             </div>
-            <span className="font-semibold" style={{ color: 'var(--red)' }}>Sanobar&apos;s Board</span>
+            <span className="font-semibold" style={{ color: 'var(--red)' }}>Ankit&apos;s Board</span>
             <span className="text-xs px-1.5 py-0.5 rounded font-medium hidden sm:block"
               style={{ background: 'var(--bg-raised)', color: 'var(--text-muted)', border: '1px solid var(--border)' }}>
               ~ Dubai

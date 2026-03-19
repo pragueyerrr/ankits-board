@@ -17,7 +17,7 @@ export interface ScrapeResult {
 export async function scrapeAllSources(force = false): Promise<ScrapeResult> {
   const result: ScrapeResult = { inserted: 0, skipped: 0, errors: [], sources: [] }
 
-  const cacheKey = cacheKeys.jobsList('all', 'marketing_dubai')
+  const cacheKey = cacheKeys.jobsList('all', 'video_dubai')
   const cached = await getCached<{ ts: number }>(cacheKey)
 
   // Don't re-scrape if we scraped in the last 6 hours (unless forced)

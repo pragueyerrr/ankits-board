@@ -2,37 +2,29 @@ import { XMLParser } from 'fast-xml-parser'
 import type { Job, JobSource } from '@/types'
 
 const INDEED_RSS_QUERIES = [
-  // Core social media
-  { q: 'social+media+manager', label: 'Social Media Manager' },
-  { q: 'social+media+strategist', label: 'Social Media Strategist' },
-  { q: 'social+media+coordinator', label: 'Social Media Coordinator' },
-  { q: 'social+media+assistant', label: 'Social Media Assistant' },
-  { q: 'social+media+specialist', label: 'Social Media Specialist' },
-  { q: 'head+of+social+media', label: 'Head of Social Media' },
-  // Performance marketing
-  { q: 'performance+marketing+manager', label: 'Performance Marketing Manager' },
-  { q: 'performance+marketing+specialist', label: 'Performance Marketing Specialist' },
-  { q: 'paid+social+manager', label: 'Paid Social Manager' },
-  { q: 'paid+media+manager', label: 'Paid Media Manager' },
-  { q: 'PPC+manager', label: 'PPC Manager' },
-  // Digital marketing
-  { q: 'digital+marketing+manager', label: 'Digital Marketing Manager' },
-  { q: 'digital+marketing+specialist', label: 'Digital Marketing Specialist' },
-  { q: 'growth+marketing+manager', label: 'Growth Marketing Manager' },
-  // Content & brand
-  { q: 'content+marketing+manager', label: 'Content Marketing Manager' },
-  { q: 'content+strategist', label: 'Content Strategist' },
-  { q: 'brand+manager', label: 'Brand Manager' },
-  // General marketing
-  { q: 'marketing+manager', label: 'Marketing Manager' },
-  { q: 'marketing+coordinator', label: 'Marketing Coordinator' },
-  { q: 'marketing+assistant', label: 'Marketing Assistant' },
-  // Reach roles
-  { q: 'head+of+marketing', label: 'Head of Marketing' },
-  { q: 'marketing+director', label: 'Marketing Director' },
-  { q: 'CRM+manager', label: 'CRM Manager' },
-  { q: 'email+marketing+manager', label: 'Email Marketing Manager' },
-  { q: 'media+planner', label: 'Media Planner' },
+  // Core video production
+  { q: 'videographer', label: 'Videographer' },
+  { q: 'video+editor', label: 'Video Editor' },
+  { q: 'video+producer', label: 'Video Producer' },
+  { q: 'cinematographer', label: 'Cinematographer' },
+  { q: 'director+of+photography', label: 'Director of Photography' },
+  // Motion & animation
+  { q: 'motion+graphics+designer', label: 'Motion Graphics Designer' },
+  { q: 'motion+graphics+artist', label: 'Motion Graphics Artist' },
+  { q: 'animator', label: 'Animator' },
+  { q: 'VFX+artist', label: 'VFX Artist' },
+  // Post-production
+  { q: 'film+editor', label: 'Film Editor' },
+  { q: 'post+production+editor', label: 'Post Production Editor' },
+  // Production roles
+  { q: 'creative+producer', label: 'Creative Producer' },
+  { q: 'production+coordinator', label: 'Production Coordinator' },
+  { q: 'video+director', label: 'Video Director' },
+  { q: 'drone+operator', label: 'Drone Operator' },
+  // Broader creative
+  { q: 'creative+director', label: 'Creative Director' },
+  { q: 'video+content+creator', label: 'Video Content Creator' },
+  { q: 'digital+content+producer', label: 'Digital Content Producer' },
 ]
 
 interface RSSItem {

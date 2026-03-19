@@ -16,7 +16,7 @@ ${job.requirements ?? ''}
   const response = await anthropic.messages.create({
     model: 'claude-haiku-4-5',
     max_tokens: 600,
-    system: 'You are a career coach specializing in marketing, social media, and performance marketing roles. Respond only with valid JSON, no markdown.',
+    system: 'You are a career coach specializing in video production, filmmaking, motion graphics, and creative media roles. Respond only with valid JSON, no markdown.',
     messages: [
       {
         role: 'user',
