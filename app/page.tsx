@@ -81,7 +81,7 @@ export default function DashboardPage() {
     setScraping(true)
     setScrapeMsg(null)
     try {
-      const res = await fetch('/api/jobs/scrape', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ force: true }) })
+      const res = await fetch('/api/jobs/scrape', { method: 'POST' })
       const data = await res.json()
       setScrapeMsg(
         data.success
