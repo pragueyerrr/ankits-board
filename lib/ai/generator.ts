@@ -146,7 +146,8 @@ GUIDELINES:
 - Max 350 words
 - Do NOT use generic phrases like "I am writing to express my interest"
 - Reference Dubai's thriving film, content, and media production scene if relevant
-- Format: Just the letter body (no date, no address headers needed)`,
+- Format: Just the letter body (no date, no address headers needed)
+- End with exactly ONE sign-off (e.g. "Warm regards, [Name]") — do NOT include two closings`,
       },
     ],
   })
