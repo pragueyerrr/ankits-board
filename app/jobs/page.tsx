@@ -1,10 +1,11 @@
 'use client'
 
 import { useState, useEffect, useCallback } from 'react'
-import { Search, Filter, RefreshCw } from 'lucide-react'
+import { Search, RefreshCw, PlusCircle } from 'lucide-react'
 import type { Job, Application, JobScore } from '@/types'
 import JobCard from '@/components/JobCard'
 import dynamic from 'next/dynamic'
+import AddJobModal from '@/components/AddJobModal'
 
 const ResumeModal = dynamic(() => import('@/components/ResumeModal'), { ssr: false })
 
@@ -17,6 +18,7 @@ export default function JobsPage() {
   const [loading, setLoading] = useState(true)
   const [scraping, setScraping] = useState(false)
   const [selectedJobId, setSelectedJobId] = useState<string | null>(null)
+  const [showAddJob, setShowAddJob] = useState(false)
 
   const pageSize = 20
 
@@ -114,6 +116,12 @@ export default function JobsPage() {
     return data.score ?? null
   }
 
+  const handleJobAdded = (newJob: Job) => {
+    setJobs((prev) => [newJob, ...prev])
+    setTotal((prev) => prev + 1)
+    invalidateJobsCache()
+  }
+
   const appByJobId = Object.fromEntries(
     applications.map((a) => [a.job_id, a])
   )
@@ -130,14 +138,16 @@ export default function JobsPage() {
             {total.toLocaleString()} jobs found
           </p>
         </div>
-        <button
-          onClick={handleScrape}
-          disabled={scraping}
-          className="btn-primary"
-        >
-          <RefreshCw className={scraping ? 'w-4 h-4 animate-spin' : 'w-4 h-4'} />
-          {scraping ? 'Scraping…' : 'Refresh Jobs'}
-        </button>
+        <div className="flex items-center gap-2">
+          <button onClick={() => setShowAddJob(true)} className="btn-secondary">
+            <PlusCircle className="w-4 h-4" />
+            Add Job
+          </button>
+          <button onClick={handleScrape} disabled={scraping} className="btn-primary">
+            <RefreshCw className={scraping ? 'w-4 h-4 animate-spin' : 'w-4 h-4'} />
+            {scraping ? 'Scraping…' : 'Refresh Jobs'}
+          </button>
+        </div>
       </div>
 
       {/* Search */}
@@ -215,12 +225,12 @@ export default function JobsPage() {
         </div>
       )}
 
-      {/* Resume modal */}
       {selectedJob && (
-        <ResumeModal
-          job={selectedJob}
-          onClose={() => setSelectedJobId(null)}
-        />
+        <ResumeModal job={selectedJob} onClose={() => setSelectedJobId(null)} />
+      )}
+
+      {showAddJob && (
+        <AddJobModal onClose={() => setShowAddJob(false)} onJobAdded={handleJobAdded} />
       )}
     </div>
   )
