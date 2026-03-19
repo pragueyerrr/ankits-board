@@ -3,31 +3,21 @@ import type { Job, JobSource } from '@/types'
 const ADZUNA_BASE = 'https://api.adzuna.com/v1/api/jobs/ae/search'
 
 const CREATIVE_CATEGORIES = [
-  // Core video production
   'videographer',
   'video editor',
   'video producer',
   'cinematographer',
-  'director of photography',
-  // Motion & animation
-  'motion graphics designer',
-  'motion graphics artist',
+  'motion graphics',
   'animator',
-  'VFX artist',
-  // Post-production
   'film editor',
-  'post production editor',
-  'post production supervisor',
-  // Production roles
   'creative producer',
   'production coordinator',
-  'video director',
-  'content creator video',
-  'drone operator',
-  // Broader creative
+  'content creator',
   'creative director',
-  'video content creator',
-  'digital content producer',
+  'media production',
+  'video',
+  'film production',
+  'post production',
 ]
 
 interface AdzunaResult {

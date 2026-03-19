@@ -2,29 +2,21 @@ import { XMLParser } from 'fast-xml-parser'
 import type { Job, JobSource } from '@/types'
 
 const INDEED_RSS_QUERIES = [
-  // Core video production
   { q: 'videographer', label: 'Videographer' },
   { q: 'video+editor', label: 'Video Editor' },
   { q: 'video+producer', label: 'Video Producer' },
   { q: 'cinematographer', label: 'Cinematographer' },
-  { q: 'director+of+photography', label: 'Director of Photography' },
-  // Motion & animation
-  { q: 'motion+graphics+designer', label: 'Motion Graphics Designer' },
-  { q: 'motion+graphics+artist', label: 'Motion Graphics Artist' },
+  { q: 'motion+graphics', label: 'Motion Graphics' },
   { q: 'animator', label: 'Animator' },
-  { q: 'VFX+artist', label: 'VFX Artist' },
-  // Post-production
   { q: 'film+editor', label: 'Film Editor' },
-  { q: 'post+production+editor', label: 'Post Production Editor' },
-  // Production roles
   { q: 'creative+producer', label: 'Creative Producer' },
   { q: 'production+coordinator', label: 'Production Coordinator' },
-  { q: 'video+director', label: 'Video Director' },
-  { q: 'drone+operator', label: 'Drone Operator' },
-  // Broader creative
+  { q: 'content+creator', label: 'Content Creator' },
   { q: 'creative+director', label: 'Creative Director' },
-  { q: 'video+content+creator', label: 'Video Content Creator' },
-  { q: 'digital+content+producer', label: 'Digital Content Producer' },
+  { q: 'media+production', label: 'Media Production' },
+  { q: 'post+production', label: 'Post Production' },
+  { q: 'video+content', label: 'Video Content' },
+  { q: 'film+production', label: 'Film Production' },
 ]
 
 interface RSSItem {
