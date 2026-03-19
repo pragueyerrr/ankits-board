@@ -40,11 +40,13 @@ function buildCoverLetterHTML(
     day: 'numeric',
   })
 
+  const signOffPattern = /^(warm regards|best regards|kind regards|sincerely|regards|yours sincerely|best wishes)/i
   const paragraphs = coverLetter
     .trim()
     .split(/\n\n+/)
     .map((p) => p.trim())
     .filter(Boolean)
+    .filter((p) => !signOffPattern.test(p))
 
   const bodyHTML = paragraphs
     .map(
