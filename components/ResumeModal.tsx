@@ -23,6 +23,9 @@ const CoverLetterPDFButton = dynamic(() => import('./CoverLetterPDFButton'), {
   ),
 })
 
+const WordDownloadButton = dynamic(() => import('./WordDownloadButton'), { ssr: false })
+const CoverLetterWordButton = dynamic(() => import('./CoverLetterWordButton'), { ssr: false })
+
 interface Props {
   job: Job
   onClose: () => void
@@ -297,10 +300,16 @@ export default function ResumeModal({ job, onClose }: Props) {
         {/* Footer */}
         <div className="flex items-center gap-2 p-4 border-t bg-slate-50 rounded-b-2xl flex-wrap">
           {resumeData && !loadingResume && (
-            <PDFDownloadButton data={resumeData} jobTitle={job.title} />
+            <>
+              <PDFDownloadButton data={resumeData} jobTitle={job.title} />
+              <WordDownloadButton data={resumeData} jobTitle={job.title} />
+            </>
           )}
           {coverLetter && !loadingCL && (
-            <CoverLetterPDFButton coverLetter={coverLetter} job={job} resumeData={resumeData} />
+            <>
+              <CoverLetterPDFButton coverLetter={coverLetter} job={job} resumeData={resumeData} />
+              <CoverLetterWordButton coverLetter={coverLetter} job={job} resumeData={resumeData} />
+            </>
           )}
           {latexSource && !loadingResume && (
             <button onClick={downloadLatex} className="btn-secondary text-xs">
