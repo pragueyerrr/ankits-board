@@ -1,6 +1,6 @@
 # Ankit's Board
 
-A personal job tracker built for my friend Ankit, who's a video & production professional hunting for his next role in Dubai.
+A personal job tracker built for my friend Ankit, who's a freelance video & production professional hunting for his next role in Dubai. Ankit and his dad have had a life-changing impact on me, and 5 years later, I am the person I am and have the life I do because of their unwavering support and immense kindness. I've known them my entire life. If there's anything I can do to repay them, I'll find a way to do it. 
 
 ---
 
@@ -29,4 +29,4 @@ Next.js 15 · Supabase · Upstash Redis · Claude API (Anthropic) · Tailwind CS
 
 ## Built with
 
-This was built with **[Claude Code](https://claude.ai/claude-code)** — Anthropic's AI coding tool. Most of the code was written through a conversation, not typed by hand.
+This was built with **[Claude Code](https://claude.ai/claude-code)** — Anthropic's AI coding tool. Most of the code was written through a conversation, not typed by hand. I have no software engineering background — just an idea and a friend who deserves my complete and utter gratitude.
